@@ -13,5 +13,11 @@ module.exports = {
   ],
   plugins: ['prettier'],
   // add your custom rules here
-  rules: {},
+  rules: {
+    'no-console': 'off',
+    'no-unused-vars': 'off',
+    'spaced-comment': 'off',
+    'lines-between-class-members': 'off',
+    '@typescript-eslint/no-unused-vars': 'off',
+  },
 }

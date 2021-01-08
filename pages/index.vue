@@ -3,6 +3,12 @@
     <div>
       <Logo />
       <h1 class="title">frontend</h1>
+      <p class="">
+        firstCount: {{ firstCount }}, secondCount: {{ secondCount }}
+      </p>
+      <button @click="onClick">first increment</button>
+      <button @click="onClick2">second increment</button>
+      <button @click="onClick3">all increment</button>
       <div class="links">
         <a
           href="https://nuxtjs.org/"
@@ -26,9 +32,29 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import { Vue, Component } from 'nuxt-property-decorator'
+import firstModule from '~/store/first'
+import secondModule from '~/store/second'
 
-export default Vue.extend({})
+@Component
+export default class Index extends Vue {
+  get firstCount() {
+    return firstModule.count
+  }
+  get secondCount() {
+    return secondModule.count
+  }
+
+  onClick() {
+    firstModule.increment()
+  }
+  onClick2() {
+    secondModule.increment()
+  }
+  onClick3() {
+    secondModule.lazyAllIncrement(10)
+  }
+}
 </script>
 
 <style>
